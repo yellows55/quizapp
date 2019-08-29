@@ -2,35 +2,45 @@
 
 //list of questions and answers for the quiz
 const quizQuestions = [
-    {id : 0,
-    question: 'When does hurricane season officially begin?',
+    {question: 'When does hurricane season officially begin?',
     answers: ['May 1st', 'June 1st', 'July 1st', 'September 1st'],
     correctAns : 'June 1st'
     },
-    {id : 1,
-    question: 'How much water should you store?',
+    {question: 'What is a hurricane?',
+    answers: ['A storm system that forms over warm ocean waters and moves to land', 'A tornado', 'A lot of rain', 'A storm that brings hail'],
+    correctAns: 'A massive storm system that forms over warm ocean waters and moves toward land'
+    },
+    {question: 'How much water should you store?',
     answers: ['1 gallon of water a day per person for 3 days', '1 gallon of water a day for 3 days', '1 gallon of water per person for 3 days', 'There is no need to store water'],
     correctAns : '1 gallon of water a day per person for 3 days'
     },
-    {id : 2,
-    question: 'Greatest threat to life and property from a hurricane',
+    {question: 'Greatest threat to life and property from a hurricane',
     answers: ['Lightning', 'Thieves', 'Storm surges', 'Fires'],
     correctAns: 'Storm surges'
     },
-    {id : 3,
-    question: 'What should you use for your source of light?',
+    {question: 'What should you use for your source of light?',
     answers: ['Candles', 'Flashlights', 'Kerosene lamps', 'Electricity'],
     correctAns: 'Flashlights'
     },
-    {id : 4,
-    question: 'What should you do if you come across standing water?',
+    {question: 'What should you do if you come across standing water?',
     answers: ['Try and swim', 'Walk through', 'Drive through', 'Turn Around'],
     correctAns: 'Turn Around'
     },
-    {id : 4,
-    question: 'When is it safe to go outside?',
+    {question: 'When is it safe to go outside?',
     answers: ['When the local authorities say it is safe', 'When it looks calm outside', 'When you think it is safe to do so', 'At any time'],
     correctAns: 'When the local authorities say it is safe'
+    },
+    {question: 'Hurricanes can affect areas inland as far as:',
+    answers: ['100 miles inland and more', '10  miles inland', 'They do not affect inland areas', '1 mile inland'],
+    correctAns: '100 miles inland and more'
+    },
+    {question: 'When is the best time to prepare a disaster kit and evacuation plan?',
+    answers: ['Tomorrow', 'Next week', 'After an evacuation is announced', 'Now'],
+    correctAns: 'Now'
+    },
+    {question: 'How much damage can an inch of water do to your home?',
+    answers: ['Very little damage', 'Up to $25,000 of damage to your home.', 'About a $1,000 total', 'It cannot cause any damage at all'],
+    correctAns: 'Now'
     }
 ];
 
@@ -53,27 +63,27 @@ $(quizStart);
 //Iterating throught the list of questions until restart
 function generateQuestion(arr) {
     if (questionNum < arr.length) {
-        return `<div class = "quiz-status">Quiz Status: ${questionNum + 1} of 6 || Your Score: ${score}/6</div>
+        return `<div class = "quiz-status">Quiz Status: ${questionNum + 1} of 10 || Your Score: ${score}/10</div>
         <h3>${quizQuestions[questionNum].question}</h3>
         <form role="form" accept-charset="UTF-8" method="post" class="questionnaire">
         <fieldset>
           <legend>Select an Answer</legend>
           <div class = "test">
-          <span><input type="radio" name="answer" value="${quizQuestions[questionNum].answers[0]}" required> 
+          <span class = "first-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[0]}" required> 
           ${quizQuestions[questionNum].answers[0]}</input></span>
-          <span><input type="radio" name="answer" value="${quizQuestions[questionNum].answers[1]}" required> 
+          <span class = "sec-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[1]}" required> 
           ${quizQuestions[questionNum].answers[1]}</input></span>
-          <span><input type="radio" name="answer" value="${quizQuestions[questionNum].answers[2]}" required>
+          <span class = "third-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[2]}" required>
           ${quizQuestions[questionNum].answers[2]}</input></span>
-          <span><input type="radio" name="answer" value="${quizQuestions[questionNum].answers[3]}" required>
+          <span class = "fourth-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[3]}" required>
           ${quizQuestions[questionNum].answers[3]}</input></span>
           </div>
           <button type="submit" class = "submit-button">Submit</button>
         </fieldset>
       </form>`;
     }
-    else if (score < 4) {
-    return `<div class = "quiz-area"><p>Your total score is: ${score}, but with a little more readiness you can weather the next hurricane season!</p>
+    else if (score < 6) {
+    return `<div class = "quiz-area"><p>Your total score is: ${score}/10, but with a little more readiness you can weather the next hurricane season!</p>
     <button type="button" class="restart-button">Try Again!</button></div>`;
   }
   else {
@@ -94,7 +104,7 @@ function increaseScore() {
 
 //evaluating the answer submitted on the quiz
 function gradeAnswer() {
-    quizArea.on('click', '.submit-button', function(event) {
+    quizArea.on('submit', '.questionnaire', function(event) {
         event.preventDefault();
         let correctAnswer = quizQuestions[questionNum].correctAns;
         let submittedAnswer = $('input[name = answer]:checked');
