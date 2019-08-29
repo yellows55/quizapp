@@ -110,7 +110,7 @@ span:hover {
     cursor: pointer;
 }
 
-@media screen and (min-width: 250px) {
+@media screen and (max-width: 250px) {
   span:hover {
     width: 80%;
 }
