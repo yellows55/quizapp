@@ -8,7 +8,7 @@ const quizQuestions = [
     },
     {question: 'What is a hurricane?',
     answers: ['A storm system that forms over warm ocean waters and moves to land', 'A tornado', 'A lot of rain', 'A storm that brings hail'],
-    correctAns: 'A massive storm system that forms over warm ocean waters and moves toward land'
+    correctAns: 'A storm system that forms over warm ocean waters and moves to land'
     },
     {question: 'How much water should you store?',
     answers: ['1 gallon of water a day per person for 3 days', '1 gallon of water a day for 3 days', '1 gallon of water per person for 3 days', 'There is no need to store water'],
@@ -39,8 +39,8 @@ const quizQuestions = [
     correctAns: 'Now'
     },
     {question: 'How much damage can an inch of water do to your home?',
-    answers: ['Very little damage', 'Up to $25,000 of damage to your home.', 'About a $1,000 total', 'It cannot cause any damage at all'],
-    correctAns: 'Now'
+    answers: ['Very little damage', 'Up to $25,000 of damage to your home', 'About a $1,000 total', 'It cannot cause any damage at all'],
+    correctAns: 'Up to $25,000 of damage to your home'
     }
 ];
 
@@ -64,30 +64,36 @@ $(quizStart);
 function generateQuestion(arr) {
     if (questionNum < arr.length) {
         return `<div class = "quiz-status">Quiz Status: ${questionNum + 1} of 10 || Your Score: ${score}/10</div>
-        <h3>${quizQuestions[questionNum].question}</h3>
         <form role="form" accept-charset="UTF-8" method="post" class="questionnaire">
+        <h3 class = quiz-question>${quizQuestions[questionNum].question}</h3>
         <fieldset>
           <legend>Select an Answer</legend>
           <div class = "test">
-          <span class = "first-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[0]}" required> 
-          ${quizQuestions[questionNum].answers[0]}</input></span>
-          <span class = "sec-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[1]}" required> 
-          ${quizQuestions[questionNum].answers[1]}</input></span>
-          <span class = "third-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[2]}" required>
-          ${quizQuestions[questionNum].answers[2]}</input></span>
-          <span class = "fourth-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[3]}" required>
-          ${quizQuestions[questionNum].answers[3]}</input></span>
+          <label><span class = "first-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[0]}" required> 
+          ${quizQuestions[questionNum].answers[0]}</input></span></label>
+          <label><span class = "sec-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[1]}" required> 
+          ${quizQuestions[questionNum].answers[1]}</input></span></label>
+          <label><span class = "third-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[2]}" required>
+          ${quizQuestions[questionNum].answers[2]}</input></span></label>
+          <label><span class = "fourth-answer"><input type="radio" name="answer" class= "form-radio" value="${quizQuestions[questionNum].answers[3]}" required>
+          ${quizQuestions[questionNum].answers[3]}</input></span></label>
           </div>
           <button type="submit" class = "submit-button">Submit</button>
         </fieldset>
       </form>`;
     }
     else if (score < 6) {
-    return `<div class = "quiz-area"><p>Your total score is: ${score}/10, but with a little more readiness you can weather the next hurricane season!</p>
-    <button type="button" class="restart-button">Try Again!</button></div>`;
+      return `<div class = "quiz-area"><p>Your total score is: ${score}/10, but with a little more readiness you can weather the next hurricane season!</p>
+      <button type="button" class="restart-button">Try Again!</button>
+      </div>`;
   }
   else {
-    return `Way to go!  Now share the knowledge with your friends and family :)`;
+    return `<div class = "quiz-area">
+    <p>Way to go!</p>
+    <p>Your total score is: ${score}/10</p>
+    <p>Now share the knowledge with your friends and family :)</p>
+    <button type="button" class="restart-button">Try Again!</button>
+    </div>`;
   }    
 }
 
@@ -119,7 +125,6 @@ function gradeAnswer() {
           $(wrongResponse);
           $(nextQuestionNum);
           $(nextQuestion);
-          console.log(correctAnswer, answer);
           $('.submit-button').css('background-color', 'red');
         };
     });
@@ -164,7 +169,7 @@ function correctResponse() {
   }
   else if (questionNum === lastQuestion) {
      quizArea.html(
-       `<div class = "correct">Awesome Job!
+       `<div class = "correct">Awesome Job!  Here are your results:
        <p><button type="button" class = "next-button">Your Results!</button></p>
     </div>`);
   }
@@ -194,7 +199,6 @@ function reStart() {
     event.preventDefault();
     location.reload();
   });
-    console.log('working');
 }
 $(reStart);
 
