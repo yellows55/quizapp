@@ -15,21 +15,42 @@ header {
 
 h1 {
   text-shadow: -3px 3px 3px #000;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+@media screen and (min-width: 560px) {
+  h1 {
+    margin: 0;
+}
 }
 
 main {
-  margin: 30px 30px 100px 30px;
+  margin: 30px 25px 100px 25px;
   border: solid 5px #f2b552;
   border-radius: 40px;
   background-color: white;
   //box-sizing: border-box;
 }
 
+@media screen and (min-width: 1020px) {
+  main {
+    margin: 30px 200px 100px 200px;
+}
+}
+
+@media screen and (min-width: 720px) {
+  main {
+    margin: 30px 100px 100px 100px;
+}
+}
+
 body {
   color: #163A59;
   background-image: url(https://cdn.pixabay.com/photo/2015/12/11/23/13/palm-tree-in-the-storm-1088921_960_720.jpg);
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
 
 h2 {
@@ -63,10 +84,11 @@ footer {
   background-color: #023139;
   color: white;
   padding: 10px;
-  position: fixed;
+  //position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 footer a {
@@ -78,12 +100,16 @@ footer a {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  height: 200px;
+  height: 400px;
 }
 
 .quiz-status {
   text-align: center;
-  color: white;
+  color: #163A59;
+}
+
+.quiz-area {
+  padding: 0 20px 20px 20px;
 }
 
 fieldset {
@@ -105,14 +131,26 @@ fieldset {
 span:hover {
     background-color: #F2D752;
     padding: 5px;
-    width: 30%;
-    height: 45px;
+    //width: 30%;
     cursor: pointer;
 }
 
-@media screen and (max-width: 720px) {
+span:focus {
+    background-color: #F2D752;
+    padding: 5px;
+    //width: 30%;
+    cursor: pointer;
+}
+
+
+label {
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media screen and (min-width: 250px) {
   span:hover {
-    width: 80%;
+    //width: 80%;
 }
 }
 
@@ -139,3 +177,4 @@ span:hover {
     margin-left : 10px;
     margin-right: 10px;
 }
+
