@@ -34,15 +34,15 @@ main {
   //box-sizing: border-box;
 }
 
-@media screen and (min-width: 1020px) {
-  main {
-    margin: 30px 200px 100px 200px;
-}
-}
-
 @media screen and (min-width: 720px) {
   main {
     margin: 30px 100px 100px 100px;
+}
+}
+
+@media screen and (min-width: 1020px) {
+  main {
+    margin: 30px 200px 100px 200px;
 }
 }
 
@@ -73,6 +73,11 @@ button {
     cursor: pointer;
 }
 
+.start-button {
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+
 p {
     color: #F28552;
     font-weight: 700;
@@ -84,9 +89,6 @@ footer {
   background-color: #023139;
   color: white;
   padding: 10px;
-  //position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   box-sizing: border-box;
 }
