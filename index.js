@@ -119,13 +119,13 @@ function gradeAnswer() {
           $(correctResponse);
           $(nextQuestionNum);
           $(nextQuestion);
-        $('.submit-button').css('background-color', 'blue');
+          //$('.submit-button').css('background-color', 'blue');
         }
         else if (answer !== correctAnswer) {
           $(wrongResponse);
           $(nextQuestionNum);
           $(nextQuestion);
-          $('.submit-button').css('background-color', 'red');
+          //$('.submit-button').css('background-color', 'red');
         };
     });
 }
