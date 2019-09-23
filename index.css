@@ -3,6 +3,15 @@
   font-family: 'Raleway', sans-serif;
 }
 
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+body::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
+
 #page-container {
   position: relative;
   min-height: 100vh;
